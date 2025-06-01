@@ -7,11 +7,37 @@
   - name: update repository cache
     apt:
       update_cache: yes
+    when: ansible_distribution in ["Debian", "Ubuntu"]
 
   - name: install apache2 package
     apt:
       name: apache2
       state: latest
     when: ansible_distribution in ["Debian", "Ubuntu"]
+
+  - name: add php support for apache on Ubuntu and Debian
+    apt:
+      name: libapache2-mod-php
+      state: latest
+    when: ansible_distribution in ["Debian", "Ubuntu"]
+
+
+
+  - name: update repository cache
+    dnf:
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install httpd package
+    dnf:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+  - name: add php support for apache on Ubuntu and Debian
+    dnf:
+      name: php
+      state: latest
+    when: ansible_distribution == "Centos"
 
 
