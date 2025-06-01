@@ -6,40 +6,24 @@
 
 # Debian and Ubuntu hosts #
 
-  - name: update repository cache
+  - name: install apache2 and php packages for Debian and Ubuntu hosts
     apt:
+      name: 
+        - apache2
+        - libapache2-mod-php
+      state: latest
       update_cache: yes
-    when: ansible_distribution in ["Debian", "Ubuntu"]
-
-  - name: install apache2 package
-    apt:
-      name: apache2
-      state: latest
-    when: ansible_distribution in ["Debian", "Ubuntu"]
-
-  - name: add php support for apache on Ubuntu and Debian
-    apt:
-      name: libapache2-mod-php
-      state: latest
     when: ansible_distribution in ["Debian", "Ubuntu"]
 
 # Centos hosts #
 
-  - name: update repository cache
+  - name: install httpd and php packages for CentOS hosts
     dnf:
+      name: 
+        - httpd
+        - php
+      state: latest
       update_cache: yes
-    when: ansible_distribution == "CentOS"
-
-  - name: install httpd package
-    dnf:
-      name: httpd
-      state: latest
-    when: ansible_distribution == "CentOS"
-
-  - name: add php support for apache on Centos
-    dnf:
-      name: php
-      state: latest
     when: ansible_distribution == "CentOS"
 
 
