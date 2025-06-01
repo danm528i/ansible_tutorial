@@ -4,6 +4,8 @@
   become: true
   tasks:
 
+# Debian and Ubuntu hosts #
+
   - name: update repository cache
     apt:
       update_cache: yes
@@ -21,7 +23,7 @@
       state: latest
     when: ansible_distribution in ["Debian", "Ubuntu"]
 
-
+# Centos hosts #
 
   - name: update repository cache
     dnf:
@@ -34,10 +36,10 @@
       state: latest
     when: ansible_distribution == "CentOS"
 
-  - name: add php support for apache on Ubuntu and Debian
+  - name: add php support for apache on Centos
     dnf:
       name: php
       state: latest
-    when: ansible_distribution == "Centos"
+    when: ansible_distribution == "CentOS"
 
 
