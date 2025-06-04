@@ -1,4 +1,9 @@
+[web_servers]
 ubuntu-01
 ubuntu-02
+
+[db_servers]
 debian-01
+
+[file_servers]
 centos-01
