@@ -7,3 +7,6 @@ debian-01
 
 [file_servers]
 centos-01
+
+[workstations]
+mint-01
