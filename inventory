@@ -1,6 +1,7 @@
 [web_servers]
 ubuntu-01
 ubuntu-02
+centos-01
 
 [db_servers]
 debian-01
@@ -9,4 +10,4 @@ debian-01
 centos-01
 
 [workstations]
-mint-01
+mint-01	ansible_python_interpreter=/usr/bin/python3.12
