@@ -1,0 +1,10 @@
+#
+# File servers
+#
+- name: install samba pkg on file server
+  tags: samba
+  package:
+    name: samba
+    state: latest
+
+
