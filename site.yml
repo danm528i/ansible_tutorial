@@ -4,20 +4,33 @@
   become: true
   tasks:
 
-  - name: install updates (Centos)
+  - name: update repo cache Centos)
     tags: always
     dnf: 
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when:  ansible_distribution == "CentOS" 
 
-  - name: install updates (Ubuntu and Debian)
+  - name: update repo cache (Ubuntu and Debian)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution in ["Debian", "Ubuntu"]
 
+#--------------------------------------------------------#
+- hosts: all
+  become: true
+  tasks:
+
+  - name: add ssh key for simone
+    tags: always
+    authorized_key:
+      user: simone
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHboRVZY0sCcx3lqw7HL1RjvAlXMz4wegzLr+QP/WoU ansible"
+
+
+#--------------------------------------------------------#
 # Web Servers
 #
 - hosts: web_servers
